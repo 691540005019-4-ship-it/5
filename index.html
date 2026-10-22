@@ -1,0 +1,2189 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="description"
+    content="เว็บไซต์แนะนำตัวนักศึกษา ภูริทัต อรัญบุญ"
+  >
+
+  <title>ภูริทัต อรัญบุญ | Student Portfolio</title>
+
+  <style>
+    /* =========================
+       THEME
+    ========================= */
+
+    :root {
+      --background: #f7f9fc;
+      --surface: #ffffff;
+      --surface-soft: #edf3ff;
+      --text: #152238;
+      --muted: #64748b;
+      --primary: #155eef;
+      --primary-hover: #124bc0;
+      --border: #dfe7f1;
+      --shadow: 0 20px 65px rgba(24, 56, 104, 0.09);
+      --header: rgba(247, 249, 252, 0.92);
+      --green: #10b981;
+    }
+
+    body.dark {
+      --background: #0c1422;
+      --surface: #142033;
+      --surface-soft: #192c48;
+      --text: #eef4ff;
+      --muted: #a0aec3;
+      --primary: #79a9ff;
+      --primary-hover: #a3c4ff;
+      --border: #293b55;
+      --shadow: 0 20px 65px rgba(0, 0, 0, 0.22);
+      --header: rgba(12, 20, 34, 0.92);
+    }
+
+    /* =========================
+       RESET
+    ========================= */
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 110px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--text);
+      font-family: Tahoma, Arial, sans-serif;
+      line-height: 1.8;
+      transition:
+        background-color 0.25s,
+        color 0.25s;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    button:focus-visible,
+    a:focus-visible,
+    input:focus-visible {
+      outline: 3px solid var(--primary);
+      outline-offset: 5px;
+    }
+
+    ::selection {
+      color: #ffffff;
+      background: #155eef;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 48px));
+      margin-inline: auto;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .eyebrow {
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--header);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(18px);
+    }
+
+    .navigation {
+      min-height: 80px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      white-space: nowrap;
+    }
+
+    .logo span {
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      margin-left: auto;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-block: 8px;
+      color: var(--muted);
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    .nav-links a::after {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 2px;
+      background: var(--primary);
+      content: "";
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--primary);
+    }
+
+    .nav-links a.active::after {
+      transform: scaleX(1);
+    }
+
+    .icon-button {
+      width: 42px;
+      height: 42px;
+      display: inline-grid;
+      place-items: center;
+      flex-shrink: 0;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      color: var(--text);
+      background: var(--surface);
+      font-size: 20px;
+      transition:
+        border-color 0.2s,
+        transform 0.2s;
+    }
+
+    .icon-button:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .menu-toggle {
+      display: none;
+    }
+
+    .scroll-progress {
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: var(--primary);
+      pointer-events: none;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      align-items: center;
+      gap: 70px;
+      min-height: 760px;
+      padding-block: 80px;
+    }
+
+    .welcome-badge {
+      width: fit-content;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 15px;
+      margin-bottom: 25px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--surface);
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 5px rgba(16, 185, 129, 0.1);
+    }
+
+    .hero h1 {
+      margin: 14px 0 22px;
+      font-size: clamp(40px, 5.2vw, 66px);
+      font-weight: 900;
+      line-height: 1.35;
+      letter-spacing: -2px;
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+    }
+
+    .typing-line {
+      min-height: 32px;
+      margin-bottom: 18px;
+      color: var(--primary);
+      font-family: Consolas, monospace;
+      font-size: 16px;
+    }
+
+    .typing-cursor {
+      display: inline-block;
+      margin-left: 3px;
+      animation: blink 1s steps(2, start) infinite;
+    }
+
+    .hero-description {
+      max-width: 470px;
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .button {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 11px 23px;
+      border: 1px solid transparent;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      transition:
+        transform 0.2s,
+        background-color 0.2s,
+        border-color 0.2s;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+    }
+
+    .button-primary {
+      background: var(--primary);
+      color: var(--background);
+    }
+
+    .button-primary:hover {
+      background: var(--primary-hover);
+    }
+
+    .button-secondary {
+      border-color: var(--border);
+      background: var(--surface);
+      color: var(--text);
+    }
+
+    .button-secondary:hover {
+      border-color: var(--primary);
+    }
+
+    .hero-note {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 32px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .hero-note::before {
+      width: 34px;
+      height: 1px;
+      background: var(--border);
+      content: "";
+    }
+
+    /* =========================
+       PORTRAIT
+    ========================= */
+
+    .portrait-wrapper {
+      position: relative;
+      padding: 12px 16px 30px 0;
+      isolation: isolate;
+    }
+
+    .portrait-wrapper::before {
+      position: absolute;
+      z-index: -1;
+      top: 36px;
+      right: 0;
+      bottom: 10px;
+      left: 24px;
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      content: "";
+      transform: rotate(5deg);
+    }
+
+    .portrait-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      background: var(--surface-soft);
+      box-shadow: var(--shadow);
+      transform: rotate(2deg);
+      transition: transform 0.35s;
+    }
+
+    .portrait-wrapper:hover .portrait-card {
+      transform: rotate(0);
+    }
+
+    .portrait-image {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      display: block;
+      object-fit: cover;
+      object-position: center 52%;
+    }
+
+    .portrait-placeholder {
+      min-height: 460px;
+      display: grid;
+      place-content: center;
+      padding: 30px;
+      text-align: center;
+      color: var(--primary);
+    }
+
+    .portrait-placeholder[hidden] {
+      display: none;
+    }
+
+    .portrait-placeholder strong {
+      font-size: 72px;
+      line-height: 1.2;
+    }
+
+    .portrait-placeholder span {
+      margin-top: 15px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .portrait-caption {
+      position: absolute;
+      z-index: 2;
+      bottom: 6px;
+      left: -25px;
+      min-width: 245px;
+      padding: 17px 23px;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .portrait-caption strong {
+      display: block;
+      font-size: 15px;
+    }
+
+    .portrait-caption span {
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 1.5px;
+    }
+
+    .floating-label {
+      position: absolute;
+      z-index: 3;
+      top: 38px;
+      right: -8px;
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--surface);
+      color: var(--primary);
+      font-family: Consolas, monospace;
+      font-size: 12px;
+      animation: float 5s ease-in-out infinite;
+    }
+
+    /* =========================
+       SECTIONS
+    ========================= */
+
+    .section {
+      padding-block: 90px;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 35px;
+      margin-bottom: 45px;
+    }
+
+    .section-heading h2 {
+      margin: 7px 0 0;
+      font-size: clamp(27px, 3.3vw, 38px);
+      line-height: 1.5;
+      letter-spacing: -1px;
+    }
+
+    .section-heading > p {
+      max-width: 390px;
+      margin: 5px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* =========================
+       ABOUT
+    ========================= */
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 70px;
+    }
+
+    .about-quote {
+      margin: 0;
+      color: var(--primary);
+      font-size: 30px;
+      line-height: 1.7;
+      font-weight: 700;
+    }
+
+    .about-content p {
+      margin-top: 0;
+      color: var(--muted);
+    }
+
+    .tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 25px;
+    }
+
+    .tag {
+      padding: 5px 13px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--surface);
+      font-size: 12px;
+    }
+
+    /* =========================
+       INTERESTS
+    ========================= */
+
+    .interest-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .interest-card {
+      position: relative;
+      min-height: 320px;
+      padding: 28px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: var(--surface);
+      color: var(--text);
+      text-align: left;
+      transition:
+        transform 0.25s,
+        border-color 0.25s,
+        box-shadow 0.25s;
+    }
+
+    .interest-card:hover {
+      border-color: var(--primary);
+      box-shadow: var(--shadow);
+      transform: translateY(-8px);
+    }
+
+    .interest-card-number {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--muted);
+      font-family: Consolas, monospace;
+      font-size: 12px;
+    }
+
+    .interest-card-symbol {
+      color: var(--primary);
+      font-size: 25px;
+    }
+
+    .interest-card h3 {
+      margin: 34px 0 16px;
+      font-size: 23px;
+      line-height: 1.6;
+    }
+
+    .interest-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .interest-card-more {
+      display: block;
+      margin-top: 28px;
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    /* =========================
+       JOURNEY
+    ========================= */
+
+    .journey-item {
+      display: grid;
+      grid-template-columns: 65px 1fr 1.2fr;
+      align-items: start;
+      gap: 24px;
+      padding-block: 30px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .journey-number {
+      padding-top: 4px;
+      color: var(--primary);
+      font-family: Consolas, monospace;
+      font-size: 17px;
+    }
+
+    .journey-item h3 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    .journey-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* =========================
+       INTERACTIVE NOTE
+    ========================= */
+
+    .note-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 45px;
+      margin-top: 65px;
+      padding: 36px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: var(--surface);
+    }
+
+    .note-section h3 {
+      margin: 8px 0 10px;
+      font-size: 25px;
+    }
+
+    .note-section p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .quote-box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 18px;
+      padding: 25px;
+      border-radius: 14px;
+      background: var(--surface-soft);
+    }
+
+    #daily-quote {
+      min-height: 72px;
+      margin: 0;
+      color: var(--text);
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    /* =========================
+       CONTACT / END
+    ========================= */
+
+    .contact-panel {
+      position: relative;
+      padding: 55px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: var(--surface-soft);
+    }
+
+    .contact-panel::after {
+      position: absolute;
+      top: -70px;
+      right: -60px;
+      width: 250px;
+      height: 250px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      content: "";
+      pointer-events: none;
+    }
+
+    .contact-panel h2 {
+      position: relative;
+      z-index: 1;
+      margin: 12px 0;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.5;
+    }
+
+    .contact-panel > p {
+      max-width: 560px;
+      color: var(--muted);
+    }
+
+    .contact-actions {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 25px;
+    }
+
+    .status-message {
+      min-height: 25px;
+      margin-bottom: 0;
+      font-size: 13px;
+      overflow-wrap: anywhere;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    .footer-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+      padding-block: 35px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 0.6px;
+    }
+
+    .footer-content a:hover {
+      color: var(--primary);
+    }
+
+    .back-to-top {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 20;
+      box-shadow: var(--shadow);
+    }
+
+    .back-to-top[hidden] {
+      display: none;
+    }
+
+    /* =========================
+       MODAL
+    ========================= */
+
+    .detail-modal {
+      width: min(530px, calc(100% - 36px));
+      max-height: 85vh;
+      padding: 30px;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: var(--surface);
+      color: var(--text);
+      box-shadow: var(--shadow);
+    }
+
+    .detail-modal::backdrop {
+      background: rgba(3, 15, 36, 0.65);
+      backdrop-filter: blur(6px);
+    }
+
+    .modal-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .detail-modal h2 {
+      margin: 23px 0 15px;
+      font-size: 28px;
+      line-height: 1.5;
+    }
+
+    .detail-modal p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .modal-tags {
+      margin-top: 25px;
+    }
+
+    /* =========================
+       ANIMATION
+    ========================= */
+
+    .reveal {
+      opacity: 1;
+      transform: none;
+    }
+
+    .motion-enabled .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition:
+        opacity 0.65s ease,
+        transform 0.65s ease;
+    }
+
+    .motion-enabled .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    @keyframes float {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-9px);
+      }
+    }
+
+    /* =========================
+       TABLET
+    ========================= */
+
+    @media (max-width: 960px) {
+      .hero {
+        min-height: 680px;
+        gap: 40px;
+      }
+
+      .hero h1 {
+        font-size: 47px;
+      }
+
+      .nav-links {
+        gap: 18px;
+      }
+
+      .interest-grid {
+        gap: 14px;
+      }
+
+      .interest-card {
+        padding: 22px;
+      }
+
+      .interest-card h3 {
+        font-size: 20px;
+      }
+
+      .about-layout {
+        gap: 35px;
+      }
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 720px) {
+      .container {
+        width: min(100% - 40px, 600px);
+      }
+
+      .navigation {
+        min-height: 72px;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .logo {
+        margin-right: auto;
+        font-size: 20px;
+      }
+
+      .menu-toggle {
+        display: inline-grid;
+      }
+
+      .nav-links {
+        width: 100%;
+        display: none;
+        order: 5;
+        gap: 0;
+        flex-direction: column;
+        align-items: stretch;
+        padding-bottom: 15px;
+        margin-left: 0;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 10px 0;
+      }
+
+      .nav-links a::after {
+        display: none;
+      }
+
+      .hero {
+        min-height: auto;
+        grid-template-columns: 1fr;
+        gap: 50px;
+        padding-block: 55px 65px;
+      }
+
+      .hero h1 {
+        font-size: clamp(42px, 10vw, 58px);
+      }
+
+      .hero-description {
+        max-width: none;
+        font-size: 15px;
+      }
+
+      .portrait-wrapper {
+        width: min(100% - 20px, 360px);
+        margin-inline: auto;
+      }
+
+      .portrait-caption {
+        left: -10px;
+        min-width: 225px;
+      }
+
+      .floating-label {
+        right: -5px;
+      }
+
+      .section {
+        padding-block: 65px;
+      }
+
+      .section-heading {
+        display: block;
+        margin-bottom: 30px;
+      }
+
+      .section-heading > p {
+        max-width: none;
+        margin-top: 18px;
+      }
+
+      .about-layout {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+
+      .about-quote {
+        font-size: 26px;
+      }
+
+      .interest-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .interest-card {
+        min-height: 0;
+        padding: 27px;
+      }
+
+      .interest-card h3 {
+        margin-top: 24px;
+        font-size: 23px;
+      }
+
+      .journey-item {
+        grid-template-columns: 35px 1fr;
+        gap: 12px;
+      }
+
+      .journey-item p {
+        grid-column: 2;
+      }
+
+      .note-section {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 25px;
+        margin-top: 45px;
+      }
+
+      .contact-panel {
+        padding: 30px 25px;
+      }
+
+      .footer-content {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .back-to-top {
+        right: 15px;
+        bottom: 15px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .container {
+        width: calc(100% - 30px);
+      }
+
+      .hero h1 {
+        font-size: 38px;
+      }
+
+      .button {
+        padding-inline: 17px;
+        font-size: 13px;
+      }
+
+      .logo {
+        font-size: 18px;
+      }
+
+      .icon-button {
+        width: 38px;
+        height: 38px;
+      }
+    }
+
+    /* =========================
+       REDUCED MOTION
+    ========================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+
+      .motion-enabled .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    /* =========================
+       PRINT
+    ========================= */
+
+    @media print {
+      body,
+      body.dark {
+        --background: #ffffff;
+        --surface: #ffffff;
+        --surface-soft: #f1f5ff;
+        --text: #152238;
+        --muted: #475569;
+        --primary: #155eef;
+        --border: #dfe7f1;
+      }
+
+      .site-header,
+      .hero-actions,
+      .hero-note,
+      .back-to-top,
+      .floating-label,
+      .note-section,
+      .contact-actions,
+      .status-message,
+      .footer-content a {
+        display: none !important;
+      }
+
+      .container {
+        width: 100%;
+      }
+
+      .hero {
+        min-height: 0;
+        padding-block: 20px 45px;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 35px;
+      }
+
+      .hero h1 {
+        font-size: 38px;
+      }
+
+      .portrait-card {
+        transform: none;
+        box-shadow: none;
+      }
+
+      .portrait-wrapper::before {
+        display: none;
+      }
+
+      .portrait-caption {
+        position: static;
+        min-width: 0;
+        margin-top: 12px;
+        box-shadow: none;
+      }
+
+      .section {
+        padding-block: 30px;
+      }
+
+      .section-heading h2 {
+        font-size: 27px;
+      }
+
+      .interest-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .interest-card {
+        min-height: 0;
+        padding: 15px;
+        break-inside: avoid;
+        box-shadow: none;
+      }
+
+      .interest-card h3 {
+        font-size: 18px;
+        margin-top: 18px;
+      }
+
+      .interest-card-more {
+        display: none;
+      }
+
+      .motion-enabled .reveal {
+        opacity: 1;
+        transform: none;
+      }
+
+      .contact-panel {
+        padding: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- =========================
+       HEADER
+  ========================= -->
+
+  <header class="site-header">
+    <div class="container navigation">
+      <a class="logo" href="#home" aria-label="กลับหน้าแรก">
+        PHURITHAT<span>.</span>
+      </a>
+
+      <nav
+        class="nav-links"
+        id="nav-links"
+        aria-label="เมนูหลัก"
+      >
+        <a href="#about">เกี่ยวกับฉัน</a>
+        <a href="#interests">ความสนใจ</a>
+        <a href="#journey">เป้าหมาย</a>
+        <a href="#contact">ทักทาย</a>
+      </nav>
+
+      <button
+        class="icon-button"
+        id="theme-toggle"
+        type="button"
+        aria-label="เปิดธีมมืด"
+        aria-pressed="false"
+        title="เปลี่ยนธีม"
+      >
+        ☾
+      </button>
+
+      <button
+        class="icon-button menu-toggle"
+        id="menu-toggle"
+        type="button"
+        aria-label="เปิดเมนู"
+        aria-controls="nav-links"
+        aria-expanded="false"
+      >
+        ☰
+      </button>
+    </div>
+
+    <div
+      class="scroll-progress"
+      id="scroll-progress"
+      aria-hidden="true"
+    ></div>
+  </header>
+
+  <main class="container">
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <div class="welcome-badge">
+          <span class="status-dot" aria-hidden="true"></span>
+          ยินดีต้อนรับสู่พื้นที่ของผม
+        </div>
+
+        <div class="eyebrow">
+          Hello, I'm Phurithat
+        </div>
+
+        <h1>
+          สวัสดีครับ<br>
+          ผม <span>ภูริทัต</span><br>
+          อรัญบุญ<span>.</span>
+        </h1>
+
+        <div
+          class="typing-line"
+          aria-label="นักศึกษาที่สนใจเว็บไซต์และการเขียนโปรแกรม"
+        >
+          <span id="typing-text" aria-hidden="true">
+            Student & curious learner
+          </span>
+          <span class="typing-cursor" aria-hidden="true">|</span>
+        </div>
+
+        <p class="hero-description">
+          นักศึกษาที่สนใจโลกของเว็บไซต์และการเขียนโปรแกรม
+          พื้นที่เล็ก ๆ นี้คือจุดเริ่มต้นในการแนะนำตัว
+          และบอกเล่าสิ่งที่ผมอยากเรียนรู้
+        </p>
+
+        <div class="hero-actions">
+          <a class="button button-primary" href="#about">
+            มารู้จักกัน
+            <span aria-hidden="true">↗</span>
+          </a>
+
+          <a class="button button-secondary" href="#interests">
+            สำรวจความสนใจ
+            <span aria-hidden="true">↓</span>
+          </a>
+        </div>
+
+        <div class="hero-note">
+          เลื่อนลงเพื่อรู้จักผมมากขึ้น
+        </div>
+      </div>
+
+      <div class="portrait-wrapper">
+        <div class="floating-label" aria-hidden="true">
+          &lt; hello world /&gt;
+        </div>
+
+        <div class="portrait-card">
+          <!--
+            เปลี่ยน src เป็นชื่อไฟล์รูปของคุณได้
+            ถ้าใช้ไฟล์ในเครื่อง ให้วางรูปไว้โฟลเดอร์เดียวกับ index.html
+            เช่น src="IMG20250609092439.jpg"
+          -->
+          <img
+            class="portrait-image"
+            id="profile-photo"
+            src="https://i.ibb.co/XxjGLR0W/IMG20250609092439.jpg"
+            alt="ภูริทัต อรัญบุญ"
+            fetchpriority="high"
+          >
+
+          <div
+            class="portrait-placeholder"
+            id="photo-placeholder"
+            hidden
+          >
+            <strong>PA</strong>
+            <span>ภูริทัต อรัญบุญ</span>
+          </div>
+        </div>
+
+        <div class="portrait-caption">
+          <strong>ภูริทัต อรัญบุญ</strong>
+          <span>STUDENT · LEARNER · EXPLORER</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         ABOUT
+    ========================= -->
+
+    <section class="section reveal" id="about">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">01 — About me</div>
+          <h2>เริ่มจากความอยากรู้</h2>
+        </div>
+
+        <p>
+          ไม่จำเป็นต้องรู้ทุกอย่างตั้งแต่วันแรก
+          ขอแค่ได้เริ่มลงมือ และค่อย ๆ เข้าใจให้มากขึ้น
+        </p>
+      </div>
+
+      <div class="about-layout">
+        <blockquote class="about-quote">
+          “เรียนรู้ ลงมือทำ<br>
+          แล้วพัฒนาไปทีละก้าว”
+        </blockquote>
+
+        <div class="about-content">
+          <p>
+            ผมสนใจการพัฒนาเว็บไซต์และการเขียนโปรแกรม
+            อยากเข้าใจทั้งสิ่งที่ผู้ใช้มองเห็นบนหน้าจอ
+            และวิธีที่โค้ดทำงานอยู่เบื้องหลัง
+          </p>
+
+          <p>
+            เว็บนี้เป็นพื้นที่แนะนำตัวของผม
+            และเป็นจุดเริ่มต้นสำหรับเก็บเรื่องราวการเรียนรู้ต่อไป
+            ผมอยากนำสิ่งที่ได้เรียนมาทดลองสร้างเป็นชิ้นงาน
+            เพื่อพัฒนาความเข้าใจผ่านการลงมือทำจริง
+          </p>
+
+          <div class="tags" aria-label="ความสนใจ">
+            <span class="tag">Student</span>
+            <span class="tag">Web Development</span>
+            <span class="tag">Programming</span>
+            <span class="tag">Learning by doing</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         INTERESTS
+    ========================= -->
+
+    <section class="section" id="interests">
+      <div class="section-heading reveal">
+        <div>
+          <div class="eyebrow">02 — My interests</div>
+          <h2>เรื่องที่อยากไปให้ลึกขึ้น</h2>
+        </div>
+
+        <p>
+          ลองกดการ์ดแต่ละใบ
+          เพื่อดูสิ่งที่ผมอยากเรียนรู้ในแต่ละด้าน
+        </p>
+      </div>
+
+      <div class="interest-grid">
+        <button
+          class="interest-card reveal"
+          type="button"
+          data-interest="web"
+          aria-haspopup="dialog"
+        >
+          <div class="interest-card-number">
+            <span>01 / WEB</span>
+            <span class="interest-card-symbol" aria-hidden="true">⌘</span>
+          </div>
+
+          <h3>
+            เว็บไซต์ที่ดี<br>
+            เริ่มจากคนใช้งาน
+          </h3>
+
+          <p>
+            สนใจการออกแบบหน้าเว็บที่อ่านง่าย ดูดี
+            และใช้งานได้ทั้งบนคอมและมือถือ
+          </p>
+
+          <span class="interest-card-more">
+            อ่านเพิ่มเติม ↗
+          </span>
+        </button>
+
+        <button
+          class="interest-card reveal"
+          type="button"
+          data-interest="code"
+          aria-haspopup="dialog"
+        >
+          <div class="interest-card-number">
+            <span>02 / CODE</span>
+            <span class="interest-card-symbol" aria-hidden="true">{ }</span>
+          </div>
+
+          <h3>
+            เปลี่ยนไอเดีย<br>
+            ให้เป็นสิ่งที่ทำงานได้
+          </h3>
+
+          <p>
+            อยากเข้าใจวิธีคิดแก้ปัญหา
+            และใช้การเขียนโปรแกรมสร้างสิ่งเล็ก ๆ ด้วยตัวเอง
+          </p>
+
+          <span class="interest-card-more">
+            อ่านเพิ่มเติม ↗
+          </span>
+        </button>
+
+        <button
+          class="interest-card reveal"
+          type="button"
+          data-interest="growth"
+          aria-haspopup="dialog"
+        >
+          <div class="interest-card-number">
+            <span>03 / GROWTH</span>
+            <span class="interest-card-symbol" aria-hidden="true">↗</span>
+          </div>
+
+          <h3>
+            เรียนรู้จาก<br>
+            การลงมือทำจริง
+          </h3>
+
+          <p>
+            ค่อย ๆ ทดลอง สังเกตสิ่งที่เกิดขึ้น
+            และนำข้อผิดพลาดกลับมาปรับปรุง
+          </p>
+
+          <span class="interest-card-more">
+            อ่านเพิ่มเติม ↗
+          </span>
+        </button>
+      </div>
+    </section>
+
+    <!-- =========================
+         JOURNEY
+    ========================= -->
+
+    <section class="section" id="journey">
+      <div class="section-heading reveal">
+        <div>
+          <div class="eyebrow">03 — What's next</div>
+          <h2>เป้าหมายในการเรียนรู้</h2>
+        </div>
+
+        <p>
+          เส้นทางที่อยากลองเดินต่อ
+          จากพื้นฐานไปสู่ผลงานที่จับต้องได้
+        </p>
+      </div>
+
+      <div class="journey-list">
+        <article class="journey-item reveal">
+          <span class="journey-number">01</span>
+
+          <h3>เข้าใจพื้นฐาน</h3>
+
+          <p>
+            เรียนรู้โครงสร้างเว็บไซต์และหลักการเขียนโปรแกรม
+            ให้สามารถอธิบายสิ่งที่ตัวเองทำได้
+          </p>
+        </article>
+
+        <article class="journey-item reveal">
+          <span class="journey-number">02</span>
+
+          <h3>สร้างด้วยตัวเอง</h3>
+
+          <p>
+            นำสิ่งที่เรียนมาทดลองทำเป็นโปรเจกต์เล็ก ๆ
+            ที่เปิดดูและใช้งานได้จริง
+          </p>
+        </article>
+
+        <article class="journey-item reveal">
+          <span class="journey-number">03</span>
+
+          <h3>ค่อย ๆ ทำให้ดีขึ้น</h3>
+
+          <p>
+            ทบทวน รับฟังความคิดเห็น
+            และพัฒนาทั้งหน้าตาและการใช้งานอย่างต่อเนื่อง
+          </p>
+        </article>
+      </div>
+
+      <div class="note-section reveal">
+        <div>
+          <div class="eyebrow">A little reminder</div>
+          <h3>กำลังใจระหว่างทาง</h3>
+          <p>
+            บางวันอาจเรียนรู้ได้เร็ว บางวันอาจช้าหน่อย
+            แต่ทุกก้าวเล็ก ๆ ก็ยังมีความหมาย
+          </p>
+        </div>
+
+        <div class="quote-box">
+          <blockquote id="daily-quote" aria-live="polite">
+            ไม่ต้องเก่งก่อนเริ่ม แต่ต้องเริ่มก่อนถึงจะเก่งขึ้น
+          </blockquote>
+
+          <button
+            class="button button-secondary"
+            id="change-quote"
+            type="button"
+          >
+            เปลี่ยนข้อความ ↻
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         CONTACT
+    ========================= -->
+
+    <section class="section reveal" id="contact">
+      <div class="contact-panel">
+        <div class="eyebrow">
+          Thanks for stopping by
+        </div>
+
+        <h2>ยินดีที่ได้รู้จักครับ 👋</h2>
+
+        <p>
+          ขอบคุณที่แวะเข้ามาในพื้นที่เล็ก ๆ ของผม
+          หวังว่าเว็บนี้จะช่วยให้คุณรู้จักผมมากขึ้นอีกนิด
+        </p>
+
+        <div class="contact-actions">
+          <button
+            class="button button-primary"
+            id="share-button"
+            type="button"
+          >
+            แชร์หน้าแนะนำตัว ↗
+          </button>
+
+          <button
+            class="button button-secondary"
+            id="print-button"
+            type="button"
+          >
+            พิมพ์ / บันทึก PDF
+          </button>
+        </div>
+
+        <p
+          class="status-message"
+          id="share-status"
+          role="status"
+        ></p>
+      </div>
+    </section>
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+      <div class="footer-content">
+        <span>
+          © <span id="current-year"></span>
+          PHURITHAT ARANYABOON · STUDENT PROFILE
+        </span>
+
+        <a href="#home">
+          กลับไปด้านบน ↑
+        </a>
+      </div>
+    </footer>
+  </main>
+
+  <!-- =========================
+       BACK TO TOP
+  ========================= -->
+
+  <button
+    class="icon-button back-to-top"
+    id="back-to-top"
+    type="button"
+    aria-label="กลับไปด้านบน"
+    hidden
+  >
+    ↑
+  </button>
+
+  <!-- =========================
+       DETAIL MODAL
+  ========================= -->
+
+  <dialog
+    class="detail-modal"
+    id="detail-modal"
+    aria-labelledby="modal-title"
+    aria-describedby="modal-description"
+  >
+    <div class="modal-top">
+      <span class="eyebrow" id="modal-category">
+        My interests
+      </span>
+
+      <button
+        class="icon-button"
+        id="close-modal"
+        type="button"
+        aria-label="ปิดรายละเอียด"
+      >
+        ×
+      </button>
+    </div>
+
+    <h2 id="modal-title"></h2>
+
+    <p id="modal-description"></p>
+
+    <div
+      class="tags modal-tags"
+      id="modal-tags"
+    ></div>
+  </dialog>
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================= -->
+
+  <script>
+    "use strict";
+
+    /* =========================
+       HELPERS
+    ========================= */
+
+    const select = (selector) => document.querySelector(selector);
+
+    const selectAll = (selector) => {
+      return document.querySelectorAll(selector);
+    };
+
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    /* =========================
+       CURRENT YEAR
+    ========================= */
+
+    select("#current-year").textContent = new Date().getFullYear();
+
+    /* =========================
+       PHOTO FALLBACK
+    ========================= */
+
+    const profilePhoto = select("#profile-photo");
+    const photoPlaceholder = select("#photo-placeholder");
+
+    function showPhotoPlaceholder() {
+      profilePhoto.hidden = true;
+      profilePhoto.style.display = "none";
+      photoPlaceholder.hidden = false;
+    }
+
+    profilePhoto.addEventListener("error", showPhotoPlaceholder);
+
+    if (profilePhoto.complete && profilePhoto.naturalWidth === 0) {
+      showPhotoPlaceholder();
+    }
+
+    /* =========================
+       THEME SWITCH
+    ========================= */
+
+    const themeToggle = select("#theme-toggle");
+
+    function applyTheme(isDark) {
+      document.body.classList.toggle("dark", isDark);
+
+      themeToggle.textContent = isDark ? "☀" : "☾";
+
+      themeToggle.setAttribute(
+        "aria-pressed",
+        String(isDark)
+      );
+
+      themeToggle.setAttribute(
+        "aria-label",
+        isDark ? "เปิดธีมสว่าง" : "เปิดธีมมืด"
+      );
+    }
+
+    function loadTheme() {
+      try {
+        const savedTheme = localStorage.getItem("phurithat-theme");
+
+        if (savedTheme === "dark") {
+          applyTheme(true);
+          return;
+        }
+
+        if (savedTheme === "light") {
+          applyTheme(false);
+          return;
+        }
+      } catch (error) {
+        // ใช้ธีมตามอุปกรณ์เมื่อไม่สามารถอ่าน localStorage ได้
+      }
+
+      applyTheme(
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+      );
+    }
+
+    loadTheme();
+
+    themeToggle.addEventListener("click", () => {
+      const nextIsDark = !document.body.classList.contains("dark");
+
+      applyTheme(nextIsDark);
+
+      try {
+        localStorage.setItem(
+          "phurithat-theme",
+          nextIsDark ? "dark" : "light"
+        );
+      } catch (error) {
+        // ธีมยังเปลี่ยนได้ แม้เบราว์เซอร์ไม่อนุญาตให้บันทึก
+      }
+    });
+
+    /* =========================
+       MOBILE MENU
+    ========================= */
+
+    const menuToggle = select("#menu-toggle");
+    const navLinks = select("#nav-links");
+
+    function closeMenu() {
+      navLinks.classList.remove("open");
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "เปิดเมนู");
+      menuToggle.textContent = "☰";
+    }
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+
+      menuToggle.setAttribute(
+        "aria-expanded",
+        String(isOpen)
+      );
+
+      menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "ปิดเมนู" : "เปิดเมนู"
+      );
+
+      menuToggle.textContent = isOpen ? "×" : "☰";
+    });
+
+    selectAll(".nav-links a").forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeMenu();
+      }
+    });
+
+    const mobileQuery = window.matchMedia("(max-width: 720px)");
+
+    mobileQuery.addEventListener("change", (event) => {
+      if (!event.matches) {
+        closeMenu();
+      }
+    });
+
+    /* =========================
+       SCROLL REVEAL
+    ========================= */
+
+    if ("IntersectionObserver" in window && !reducedMotion) {
+      document.body.classList.add("motion-enabled");
+
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.1,
+          rootMargin: "0px 0px -20px 0px"
+        }
+      );
+
+      selectAll(".reveal").forEach((element) => {
+        revealObserver.observe(element);
+      });
+    }
+
+    /* =========================
+       SCROLL PROGRESS
+       ACTIVE NAVIGATION
+       BACK TO TOP
+    ========================= */
+
+    const progressBar = select("#scroll-progress");
+    const backToTop = select("#back-to-top");
+    const pageSections = selectAll("main section[id]");
+    const navigationLinks = selectAll(".nav-links a");
+
+    let scrollFramePending = false;
+
+    function updateScrollState() {
+      const scrollableHeight =
+        document.documentElement.scrollHeight -
+        window.innerHeight;
+
+      const percentage = scrollableHeight > 0
+        ? (window.scrollY / scrollableHeight) * 100
+        : 0;
+
+      progressBar.style.width =
+        Math.max(0, Math.min(100, percentage)) + "%";
+
+      backToTop.hidden = window.scrollY < 500;
+
+      let currentSection = "home";
+
+      pageSections.forEach((section) => {
+        if (section.getBoundingClientRect().top <= 170) {
+          currentSection = section.id;
+        }
+      });
+
+      navigationLinks.forEach((link) => {
+        const active = link.hash === "#" + currentSection;
+
+        link.classList.toggle("active", active);
+
+        if (active) {
+          link.setAttribute("aria-current", "location");
+        } else {
+          link.removeAttribute("aria-current");
+        }
+      });
+
+      scrollFramePending = false;
+    }
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!scrollFramePending) {
+          scrollFramePending = true;
+          window.requestAnimationFrame(updateScrollState);
+        }
+      },
+      { passive: true }
+    );
+
+    window.addEventListener("resize", updateScrollState);
+    window.addEventListener("load", updateScrollState);
+
+    updateScrollState();
+
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: reducedMotion ? "instant" : "smooth"
+      });
+    });
+
+    /* =========================
+       TYPEWRITER
+    ========================= */
+
+    const typingText = select("#typing-text");
+
+    const typingMessages = [
+      "Student & curious learner",
+      "Interested in web development",
+      "Learning by doing",
+      "Keep learning. Keep creating."
+    ];
+
+    let messageIndex = 0;
+    let characterIndex = typingMessages[0].length;
+    let deleting = true;
+    let typingTimer = null;
+
+    function typeNextCharacter() {
+      const currentMessage = typingMessages[messageIndex];
+
+      if (deleting) {
+        characterIndex -= 1;
+
+        typingText.textContent = currentMessage.slice(
+          0,
+          Math.max(0, characterIndex)
+        );
+
+        if (characterIndex <= 0) {
+          deleting = false;
+
+          messageIndex =
+            (messageIndex + 1) % typingMessages.length;
+
+          typingTimer = window.setTimeout(
+            typeNextCharacter,
+            300
+          );
+
+          return;
+        }
+
+        typingTimer = window.setTimeout(
+          typeNextCharacter,
+          35
+        );
+
+        return;
+      }
+
+      characterIndex += 1;
+
+      typingText.textContent = typingMessages[messageIndex].slice(
+        0,
+        characterIndex
+      );
+
+      if (
+        characterIndex >=
+        typingMessages[messageIndex].length
+      ) {
+        deleting = true;
+
+        typingTimer = window.setTimeout(
+          typeNextCharacter,
+          2200
+        );
+
+        return;
+      }
+
+      typingTimer = window.setTimeout(
+        typeNextCharacter,
+        65
+      );
+    }
+
+    if (!reducedMotion) {
+      typingTimer = window.setTimeout(
+        typeNextCharacter,
+        2400
+      );
+    }
+
+    document.addEventListener("visibilitychange", () => {
+      if (reducedMotion) {
+        return;
+      }
+
+      window.clearTimeout(typingTimer);
+
+      if (!document.hidden) {
+        typingTimer = window.setTimeout(
+          typeNextCharacter,
+          700
+        );
+      }
+    });
+
+    /* =========================
+       INTEREST MODAL
+    ========================= */
+
+    const interestDetails = {
+      web: {
+        category: "01 / Web development",
+        title: "เว็บไซต์ที่ดี เริ่มจากคนใช้งาน",
+        description:
+          "ผมอยากเรียนรู้ HTML สำหรับจัดโครงสร้างเนื้อหา " +
+          "CSS สำหรับออกแบบหน้าตา และ JavaScript สำหรับเพิ่มการโต้ตอบ " +
+          "รวมถึงการทำเว็บไซต์ให้เหมาะกับหน้าจอหลายขนาด " +
+          "เพื่อให้ผู้ใช้เปิดอ่านและใช้งานได้สะดวก",
+        tags: ["HTML", "CSS", "JavaScript", "Responsive Design"]
+      },
+
+      code: {
+        category: "02 / Programming",
+        title: "เปลี่ยนไอเดียให้เป็นสิ่งที่ทำงานได้",
+        description:
+          "ผมอยากฝึกแยกปัญหาใหญ่ให้เป็นขั้นตอนเล็ก ๆ " +
+          "ทดลองเขียนโค้ด ตรวจสอบผลลัพธ์ " +
+          "และเข้าใจสาเหตุเมื่อโปรแกรมทำงานไม่ตรงตามที่คิด " +
+          "โดยเริ่มจากโจทย์และโปรเจกต์ที่เหมาะกับระดับของตัวเอง",
+        tags: ["Logic", "Problem Solving", "Debugging", "Practice"]
+      },
+
+      growth: {
+        category: "03 / Personal growth",
+        title: "เรียนรู้จากการลงมือทำจริง",
+        description:
+          "ผมตั้งใจเริ่มจากสิ่งที่ทำไหว ลองสร้างชิ้นงานเล็ก ๆ " +
+          "แล้วทบทวนว่าทำอะไรได้ดีและมีอะไรที่ควรปรับปรุง " +
+          "พร้อมเปิดรับความคิดเห็น " +
+          "เพื่อนำมาพัฒนาความเข้าใจและทักษะอย่างต่อเนื่อง",
+        tags: ["Learning", "Experiment", "Feedback", "Consistency"]
+      }
+    };
+
+    const detailModal = select("#detail-modal");
+    const modalCategory = select("#modal-category");
+    const modalTitle = select("#modal-title");
+    const modalDescription = select("#modal-description");
+    const modalTags = select("#modal-tags");
+    const closeModalButton = select("#close-modal");
+
+    let lastModalTrigger = null;
+
+    function openInterestModal(key, trigger) {
+      const detail = interestDetails[key];
+
+      if (!detail) {
+        return;
+      }
+
+      lastModalTrigger = trigger;
+
+      modalCategory.textContent = detail.category;
+      modalTitle.textContent = detail.title;
+      modalDescription.textContent = detail.description;
+
+      modalTags.replaceChildren();
+
+      detail.tags.forEach((tagText) => {
+        const tag = document.createElement("span");
+        tag.className = "tag";
+        tag.textContent = tagText;
+        modalTags.appendChild(tag);
+      });
+
+      detailModal.showModal();
+    }
+
+    selectAll("[data-interest]").forEach((card) => {
+      card.addEventListener("click", () => {
+        openInterestModal(card.dataset.interest, card);
+      });
+    });
+
+    closeModalButton.addEventListener("click", () => {
+      detailModal.close();
+    });
+
+    detailModal.addEventListener("click", (event) => {
+      const bounds = detailModal.getBoundingClientRect();
+
+      const outside =
+        event.clientX < bounds.left ||
+        event.clientX > bounds.right ||
+        event.clientY < bounds.top ||
+        event.clientY > bounds.bottom;
+
+      if (event.target === detailModal && outside) {
+        detailModal.close();
+      }
+    });
+
+    detailModal.addEventListener("close", () => {
+      if (lastModalTrigger) {
+        lastModalTrigger.focus();
+      }
+    });
+
+    /* =========================
+       CHANGE QUOTE
+    ========================= */
+
+    const encouragements = [
+      "ไม่ต้องเก่งก่อนเริ่ม แต่ต้องเริ่มก่อนถึงจะเก่งขึ้น",
+      "ทุกข้อผิดพลาดมีสิ่งใหม่ให้เรียนรู้เสมอ",
+      "ก้าวเล็ก ๆ ที่ทำต่อเนื่อง พาเราไปได้ไกลกว่าที่คิด",
+      "วันนี้เข้าใจมากกว่าเมื่อวานอีกนิด ก็ถือว่าก้าวหน้าแล้ว",
+      "ให้เวลากับการเรียนรู้ แล้วอย่าลืมให้เวลาตัวเองได้พัก",
+      "ผลงานชิ้นแรกไม่ต้องสมบูรณ์แบบ แค่เป็นจุดเริ่มต้นก็พอ"
+    ];
+
+    let currentQuoteIndex = 0;
+
+    select("#change-quote").addEventListener("click", () => {
+      currentQuoteIndex =
+        (currentQuoteIndex + 1) % encouragements.length;
+
+      select("#daily-quote").textContent =
+        encouragements[currentQuoteIndex];
+    });
+
+    /* =========================
+       SHARE
+    ========================= */
+
+    const shareButton = select("#share-button");
+    const shareStatus = select("#share-status");
+
+    shareButton.addEventListener("click", async () => {
+      shareStatus.textContent = "";
+
+      if (window.location.protocol === "file:") {
+        shareStatus.textContent =
+          "กำลังเปิดไฟล์ในเครื่อง เมื่อนำเว็บขึ้น GitHub Pages แล้ว " +
+          "จะสามารถแชร์ลิงก์เว็บได้";
+
+        return;
+      }
+
+      const shareData = {
+        title: "ภูริทัต อรัญบุญ | Student Portfolio",
+        text: "มารู้จักผมผ่านเว็บไซต์แนะนำตัวครับ",
+        url: window.location.href
+      };
+
+      try {
+        if (navigator.share) {
+          await navigator.share(shareData);
+          return;
+        }
+
+        if (
+          navigator.clipboard &&
+          window.isSecureContext
+        ) {
+          await navigator.clipboard.writeText(
+            shareData.url
+          );
+
+          shareStatus.textContent =
+            "คัดลอกลิงก์แล้ว นำไปส่งให้เพื่อนได้เลย";
+
+          return;
+        }
+
+        shareStatus.textContent =
+          "ลิงก์หน้าเว็บ: " + shareData.url;
+      } catch (error) {
+        if (error.name !== "AbortError") {
+          shareStatus.textContent =
+            "แชร์ไม่สำเร็จ ลองคัดลอกลิงก์จากแถบที่อยู่แทนได้ครับ";
+        }
+      }
+    });
+
+    /* =========================
+       PRINT
+    ========================= */
+
+    select("#print-button").addEventListener("click", () => {
+      window.print();
+    });
+  </script>
+</body>
+</html>
